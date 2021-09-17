@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cncjs-widget-gamepad/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/cncjs-widget-gamepad/static/js/main.76d15f25.chunk.js",
+    "main.js.map": "/cncjs-widget-gamepad/static/js/main.76d15f25.chunk.js.map",
+    "runtime-main.js": "/cncjs-widget-gamepad/static/js/runtime-main.d9860fd2.js",
+    "runtime-main.js.map": "/cncjs-widget-gamepad/static/js/runtime-main.d9860fd2.js.map",
+    "static/js/2.af139bb1.chunk.js": "/cncjs-widget-gamepad/static/js/2.af139bb1.chunk.js",
+    "static/js/2.af139bb1.chunk.js.map": "/cncjs-widget-gamepad/static/js/2.af139bb1.chunk.js.map",
+    "static/js/3.3ad1ecd2.chunk.js": "/cncjs-widget-gamepad/static/js/3.3ad1ecd2.chunk.js",
+    "static/js/3.3ad1ecd2.chunk.js.map": "/cncjs-widget-gamepad/static/js/3.3ad1ecd2.chunk.js.map",
+    "index.html": "/cncjs-widget-gamepad/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/cncjs-widget-gamepad/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.af139bb1.chunk.js.LICENSE.txt": "/cncjs-widget-gamepad/static/js/2.af139bb1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9860fd2.js",
+    "static/js/2.af139bb1.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.76d15f25.chunk.js"
+  ]
+}
