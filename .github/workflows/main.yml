@@ -18,14 +18,12 @@ jobs:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-node-    
+          ${{ runner.os }}-node-
     - name: Build
       run: |
-        export PUBLIC_URL=/cncjs-widget-gamepad
         npm install -g yarn
         yarn install
         yarn build
-        cp build/index.html build/404.html
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
