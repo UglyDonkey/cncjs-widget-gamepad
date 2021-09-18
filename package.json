@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "mobx": "^6.3.3",
-    "mobx-react-lite": "^3.2.1",
+    "mobx": "6.3.3",
+    "mobx-react-lite": "3.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "4.0.3",
-    "styled-components": "^5.3.1",
+    "socket.io-client": "2.3.0",
+    "styled-components": "5.3.1",
     "web-vitals": "1.1.2"
   },
   "devDependencies": {

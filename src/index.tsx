@@ -4,8 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import setupListeners from "./gamepad/listeners";
+import setupResizer from "./resizer/setup";
+import {setupConnection} from "./connection/connection";
 
 setupListeners();
+setupResizer();
+setupConnection();
 
 ReactDOM.render(
   <React.StrictMode>

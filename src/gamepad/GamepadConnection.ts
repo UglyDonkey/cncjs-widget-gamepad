@@ -23,7 +23,7 @@ export class GamepadConnection {
         if(i !== -1) {
             this.available.splice(i, 1);
         }
-        if(this.selected === gamepad) {
+        if(this.selected?.index === gamepad.index) {
             this.selected = undefined;
         }
     }
