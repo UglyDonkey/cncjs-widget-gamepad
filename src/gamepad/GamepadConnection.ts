@@ -4,6 +4,7 @@ import {Gamepad} from "./Gamepad";
 export class GamepadConnection {
     selected?: Gamepad = undefined;
     available: Gamepad[] = [];
+    deadzone: number = 0.15;
 
     constructor() {
         makeAutoObservable(this);
@@ -33,6 +34,14 @@ export class GamepadConnection {
             return;
         }
         this.selected = gamepad;
+    }
+
+    get normalize() {
+        return 1 / (1 - this.deadzone);
+    }
+
+    setDeadzone(deadzone: number) {
+        this.deadzone = deadzone;
     }
 }
 

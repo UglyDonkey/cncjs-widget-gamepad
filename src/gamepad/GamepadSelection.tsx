@@ -5,7 +5,10 @@ import {OneLine} from "../common/OneLine";
 
 export const GamepadSelection = observer(() => (
     <div>
-        {gamepadConnection.available.map(gamepad => <GamepadOption key={gamepad.index} gamepad={gamepad}/>)}
+        {gamepadConnection.available.length === 0 ?
+            'no gamepads detected'
+            :
+            gamepadConnection.available.map(gamepad => <GamepadOption key={gamepad.index} gamepad={gamepad}/>)}
     </div>
 ));
 

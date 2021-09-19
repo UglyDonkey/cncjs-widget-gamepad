@@ -8,7 +8,7 @@ export const GamepadStatus = observer (() => (
             ?
             `using: ${gamepadConnection.selected.name}`
             :
-            'please select controller'
+            'please select gamepad'
         }
     </OneLine>
 ));

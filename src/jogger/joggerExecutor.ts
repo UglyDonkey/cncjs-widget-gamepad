@@ -2,6 +2,7 @@ import {getConnection} from "../connection/connection";
 import {reaction} from "mobx";
 import {Jogger} from "./jogger";
 import fetchControls from "../gamepad/fetchControls";
+import jogger from "./index";
 type Timeout = NodeJS.Timeout;
 
 const JOG_CANCEL = String.fromCharCode(0x85);
@@ -10,6 +11,7 @@ export class JoggerExecutor {
     private state: Jogger;
     private isStopped: boolean = true;
     private fetchInterval?: Timeout;
+    private lastFetch: number = 0;
 
     constructor(state: Jogger) {
         this.state = state;
@@ -19,6 +21,7 @@ export class JoggerExecutor {
     on() {
         console.log('jogger on')
         getConnection()?.on(this.onOk);
+        this.lastFetch = new Date().getTime();
         this.startIdleFetch();
     }
 
@@ -40,15 +43,40 @@ export class JoggerExecutor {
             return;
         }
 
+        const dt = Math.min(this.getDt(), 15);
+
         const {x, y, z} = fetchControls();
         const squaredMagnitude = x * x + y * y + z * z;
         if(squaredMagnitude === 0) {
             this.stop();
         }else{
-            getConnection()?.sendGcode(`$J=G91 X${x} Y${y} Z${z} F${Math.sqrt(squaredMagnitude) * 1000}`);
+            const f = Math.sqrt(squaredMagnitude) * jogger.maxFeedRate;
+            const multiplier = 0.001 * f * dt;
+            console.log({x, f, dt, multiplier})
+            this.jog({
+                x: x * multiplier,
+                y: y * multiplier,
+                z: z * multiplier,
+                f
+            });
             this.isStopped = false;
             this.stopIdleFetch();
         }
+    }
+
+    private getDt() {
+        const time = new Date().getTime();
+        const dt = time - this.lastFetch;
+        this.lastFetch = time;
+        return dt;
+    }
+
+    private jog(params: {[key: string]: number}) {
+        const payload = Object.entries(params)
+            .map(([key, value]) => `${key.toUpperCase()}${value.toFixed(4)}`)
+            .join(' ');
+
+        getConnection()?.sendGcode(`$J=G91 ${payload}`);
     }
 
     private stop() {
