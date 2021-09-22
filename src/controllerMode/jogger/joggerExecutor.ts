@@ -1,7 +1,7 @@
-import {getConnection} from "../connection/connection";
+import {getConnection} from "../../connection/connection";
 import {reaction} from "mobx";
 import {Jogger} from "./jogger";
-import fetchControls from "../gamepad/fetchControls";
+import fetchControls from "../../gamepad/fetchControls";
 import jogger from "./index";
 type Timeout = NodeJS.Timeout;
 

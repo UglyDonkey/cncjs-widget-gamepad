@@ -15,6 +15,10 @@ export class Jogger {
     setMaxFeedRate(maxFeedRate: number) {
         this.maxFeedRate = maxFeedRate;
     }
+
+    off() {
+        this.enabled = false;
+    }
 }
 
 

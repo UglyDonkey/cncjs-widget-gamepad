@@ -3,15 +3,13 @@ import {GamepadStatus} from "./gamepad/GamepadStatus";
 import {GamepadSelection} from "./gamepad/GamepadSelection";
 import styled from "styled-components";
 import {Connection} from "./connection/components/Connection";
-import {JogSwitch} from "./jogger/JogSwitch";
-import {JoggerSettings} from "./jogger/JoggerSettings";
 import {GamepadSettings} from "./gamepad/GamepadSettings";
+import {ControllerModeSelect} from "./controllerMode/ControllerModeSelect";
 
 const App = () => (
     <AppDiv>
         <Connection />
-        <JogSwitch />
-        <JoggerSettings />
+        <ControllerModeSelect />
         <GamepadStatus />
         <GamepadSelection />
         <GamepadSettings />
