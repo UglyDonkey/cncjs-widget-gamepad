@@ -49,18 +49,19 @@ export class KnobExecutor {
     }
 
     private fetch = () => {
-        if(!this.state.enabled || !this.lastOk) {
-            return;
-        }
-
         const angles = fetchAngles();
 
-        const deltas = angles.map((value, index) => this.toDelta(value, this.lastAngles[index]))
-        if( deltas.find(a => a !== undefined) ) {
-            const [x, y] = this.normalize(deltas);
-            this.jog({x, y, f: 9999});
-        } else {
-            this.stop();
+        if (this.state.enabled && this.lastOk) {
+            const deltas = angles
+                .map((value, index) => this.toDelta(value, this.lastAngles[index]))
+                .map(value => value && value * this.state.sensitivity);
+
+            if (deltas.find(a => a !== undefined)) {
+                const [x, y] = this.normalize(deltas);
+                this.jog({x, y, f: 9999});
+            } else {
+                this.stop();
+            }
         }
 
         this.lastAngles = angles;

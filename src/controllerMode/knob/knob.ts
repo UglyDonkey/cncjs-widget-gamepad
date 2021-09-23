@@ -2,6 +2,7 @@ import {makeAutoObservable} from "mobx";
 
 export class Knob {
     enabled: boolean = false;
+    sensitivity: number = 1;
 
     constructor() {
         makeAutoObservable(this);
@@ -13,5 +14,9 @@ export class Knob {
 
     off() {
         this.enabled = false;
+    }
+
+    setSensitivity(sensitivity: number) {
+        this.sensitivity = sensitivity;
     }
 }
